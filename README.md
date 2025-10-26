@@ -1,39 +1,27 @@
-# Ubuntu Backup & Mini Shell Assignment
 
-## Part 1 — Automatic Backup Script
+# Backup Script - Ubuntu Instructions
 
-### Description
-A Bash script that creates automated, periodic backups of a directory.  
-Older backups are deleted once the max count is reached.
+## Description
+This script automatically creates periodic backups of a directory.
+Old backups are deleted once the maximum count is reached.
 
-### How to Use (Ubuntu)
-1. Make it executable:
+## Usage
+1. Give execute permission:
    chmod +x backup.sh
 
 2. Run manually:
-   ./backup.sh ./data ./backups 60 5
+   ./backup.sh <source_dir> <backup_dir> <interval_seconds> <max_backups>
 
-   - `./data` is the folder to back up  
-   - `./backups` is the destination  
-   - `60` = backup every 60 seconds  
-   - `5` = keep only the 5 most recent backups  
+Example:
+   ./backup.sh ./mydata ./backups 60 5
 
-3. Or use Makefile:
-   make prepare
-   make backup
+3. Run via Makefile:
+   make run
 
-4. Stop anytime using:
-   Ctrl + C
+4. To clean all backups:
+   make clean
 
----
-
-## Part 2 — Mini Shell
-
-### Description
-A simple Linux shell written in C that can execute commands using `fork()` and `execvp()`.
-
-### Run (Ubuntu)
-1. Compile:
-   make shell
-
-2. Example usage:
+## Notes
+- Works on Ubuntu (tested on bash 5.1)
+- Uses tar to create compressed .tar.gz archives
+- Script runs continuously — press Ctrl+C to stop
